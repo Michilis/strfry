@@ -73,6 +73,8 @@ void RelayServer::runWebsocket(ThreadPool<MsgWebsocket>::Thread &thr) {
                     { "max_subscriptions", cfg().relay__maxSubsPerConnection },
                     { "max_limit", cfg().relay__maxFilterLimit },
                 }) },
+                { "payments_url", cfg().relay__info__payments_url },
+                { "fees", tao::json::from_string(cfg().relay__info__fees) }
             });
 
             if (cfg().relay__info__name.size()) nip11["name"] = cfg().relay__info__name;

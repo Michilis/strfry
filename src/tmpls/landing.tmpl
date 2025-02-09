@@ -134,6 +134,22 @@
                 <td>Contact</td>
                 <td>$(cfg().relay__info__contact)</td>
             </tr>
+
+            <tr>
+                <td>Payments URL</td>
+                <td>$(cfg().relay__info__payments_url)</td>
+            </tr>
+
+            <tr>
+                <td>Fees</td>
+                <td>
+                    <ul>
+                        {{ for fee in cfg().relay__info__fees.subscription }}
+                        <li>{{ fee.amount }} {{ fee.unit }}</li>
+                        {{ endfor }}
+                    </ul>
+                </td>
+            </tr>
         </table>
 
         <table>

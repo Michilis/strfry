@@ -63,6 +63,18 @@ std::string nostrJsonToPackedEvent(const tao::json::value &v) {
         expiration = 1;
     }
 
+    // Validate and include payments_url if it's part of the event
+    if (v.find("payments_url") != v.end()) {
+        std::string payments_url = jsonGetString(v.at("payments_url"), "event payments_url field was not a string");
+        // Add validation or processing as needed
+    }
+
+    // Validate and include fees if they're part of the event
+    if (v.find("fees") != v.end()) {
+        tao::json::value fees = v.at("fees");
+        // Add validation or processing as needed
+    }
+
     PackedEventBuilder builder(id, pubkey, created_at, kind, expiration, tagBuilder);
 
     return std::move(builder.buf);

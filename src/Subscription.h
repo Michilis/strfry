@@ -47,7 +47,7 @@ namespace std {
 
 
 struct Subscription : NonCopyable {
-    Subscription(uint64_t connId_, std::string subId_, NostrFilterGroup filterGroup_) : connId(connId_), subId(subId_), filterGroup(filterGroup_) {}
+    Subscription(uint64_t connId_, std::string subId_, NostrFilterGroup filterGroup_) : connId(connId_), subId(subId_), filterGroup(filterGroup_), payments_url("https://noderunners.azzamo.net"), fees(tao::json::parse(R"({"subscription": [{"amount": 10000000, "unit": "msats"}]})")) {}
 
     // Params
 
@@ -58,6 +58,9 @@ struct Subscription : NonCopyable {
     // State
 
     uint64_t latestEventId = MAX_U64;
+
+    std::string payments_url;
+    tao::json::value fees;
 };
 
 
